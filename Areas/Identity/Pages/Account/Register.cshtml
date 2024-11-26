@@ -1,0 +1,75 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row">
+    <div class="col-lg-6 mx-auto rounded border p-3">
+        <h2 class="text-center mb-3">Create a new account.</h2>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+        
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        
+            <div class="row mb-3">
+                <label classs="col-sm-4 col-form-label">Name</label>
+                <div class="col-sm">
+                    <input class="form-control" asp-for="Input.Name"/>
+                    <span asp-validation-for="Input.Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label classs="col-sm-4 col-form-label">Surname</label>
+                <div class="col-sm">
+                    <input class="form-control" asp-for="Input.Surname" />
+                    <span asp-validation-for="Input.Surname" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label classs="col-sm-4 col-form-label">Email</label>
+                <div class="col-sm">
+                    <input class="form-control" asp-for="Input.Email" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label classs="col-sm-4 col-form-label">Phone number</label>
+                <div class="col-sm">
+                    <input class="form-control" asp-for="Input.PhoneNumber" />
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label classs="col-sm-4 col-form-label">Address</label>
+                <div class="col-sm">
+                    <input class="form-control" asp-for="Input.Address" />
+                    <span asp-validation-for="Input.Address" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label classs="col-sm-4 col-form-label">Password</label>
+                <div class="col-sm">
+                    <input class="form-control" asp-for="Input.Password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label classs="col-sm-4 col-form-label">ConfirmPassword</label>
+                <div class="col-sm">
+                    <input class="form-control" asp-for="Input.ConfirmPassword" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-sm-4 d-grid">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+                <div class="col d-grid">
+                    <a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
+                </div>
+            </div>
+        </form> 
+    </div>
+</div>
