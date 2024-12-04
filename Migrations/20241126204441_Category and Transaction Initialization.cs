@@ -13,22 +13,12 @@ namespace Inzynierka.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "AspNetRoles",
-                keyColumn: "Id",
-                keyValue: "676b3943-8c34-4a66-bffb-994e19350a6f");
-
-            migrationBuilder.DeleteData(
-                table: "AspNetRoles",
-                keyColumn: "Id",
-                keyValue: "7e24386c-0b82-4cb0-8f1b-a933b90badbb");
-
-            // Drop the existing primary key
+            // Drop existing constraints on AspNetUserTokens
             migrationBuilder.DropPrimaryKey(
                 name: "PK_AspNetUserTokens",
                 table: "AspNetUserTokens");
 
-            // Alter columns
+            // Modify AspNetUserTokens columns
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "AspNetUserTokens",
@@ -53,6 +43,15 @@ namespace Inzynierka.Migrations
                 table: "AspNetUserTokens",
                 columns: new[] { "LoginProvider", "Name" });
 
+            // Drop constraints and modify AspNetUserLogins
+            migrationBuilder.DropForeignKey(
+                name: "FK_AspNetUserLogins_AspNetUsers_UserId",
+                table: "AspNetUserLogins");
+
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_AspNetUserLogins",
+                table: "AspNetUserLogins");
+
             migrationBuilder.AlterColumn<string>(
                 name: "ProviderKey",
                 table: "AspNetUserLogins",
@@ -71,15 +70,29 @@ namespace Inzynierka.Migrations
                 oldClrType: typeof(string),
                 oldType: "nvarchar(450)");
 
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_AspNetUserLogins",
+                table: "AspNetUserLogins",
+                columns: new[] { "LoginProvider", "ProviderKey" });
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_AspNetUserLogins_AspNetUsers_UserId",
+                table: "AspNetUserLogins",
+                column: "UserId",
+                principalTable: "AspNetUsers",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            // Additional operations for new tables
             migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
                 {
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "navchar(50)", nullable: false),
-                    Icon = table.Column<string>(type: "navchar(5)", nullable: false),
-                    Type = table.Column<string>(type: "navchar(10)", nullable: false)
+                    Title = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    Icon = table.Column<string>(type: "nvarchar(5)", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(10)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -94,7 +107,7 @@ namespace Inzynierka.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<int>(type: "int", nullable: false),
-                    Note = table.Column<string>(type: "navchar(100)", nullable: true),
+                    Note = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -108,20 +121,12 @@ namespace Inzynierka.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[,]
-                {
-            { "7dc48412-0f31-4df8-a013-4779b14c94af", null, "client", "client" },
-            { "974c3897-38a0-4354-a497-64302e2de1d9", null, "admin", "admin" }
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Transactions_CategoryId",
                 table: "Transactions",
                 column: "CategoryId");
         }
+
 
 
         /// <inheritdoc />

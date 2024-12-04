@@ -1,0 +1,41 @@
+﻿@page
+@model Inzynierka.Areas.Identity.Pages.Category.IndexModel
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<h1>Categories</h1>
+
+<p>
+
+    <a asp-area="Identity" asp-page="/Category/Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Icon</th>
+            <th>Type</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model.Categories)
+        {
+            <tr>
+                <td>@category.Title</td>
+                <td>@category.Icon</td>
+                <td>@category.Type</td>
+                <td>
+                    <a asp-area="Identity" asp-page="/Category/Edit" asp-route-id="@category.CategoryId">Edit</a> |
+                    <a asp-area="Identity" asp-page="/Category/Details" asp-route-id="@category.CategoryId">Details</a> |
+                    <a asp-area="Identity" asp-page="/Category/Delete" asp-route-id="@category.CategoryId">Delete</a>
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>
