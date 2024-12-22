@@ -4,6 +4,7 @@ using Inzynierka.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Inzynierka.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241204165009_AddUserIdToCategory")]
+    partial class AddUserIdToCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,15 +115,15 @@ namespace Inzynierka.Migrations
 
                     b.Property<string>("Icon")
                         .IsRequired()
-                        .HasColumnType("nvarchar(5)");
+                        .HasColumnType("navchar(5)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("navchar(50)");
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("navchar(10)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -141,8 +144,8 @@ namespace Inzynierka.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"));
 
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -151,12 +154,7 @@ namespace Inzynierka.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Note")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("navchar(100)");
 
                     b.HasKey("TransactionId");
 
@@ -194,13 +192,13 @@ namespace Inzynierka.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "cd55c495-0dbe-4212-b28e-b70f66ddc6d7",
+                            Id = "8efbbc51-bf7c-4cd9-adbe-35fc33809781",
                             Name = "admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "1b90d729-20c3-4525-b5b3-1e4b62677fcf",
+                            Id = "3bacfc1f-5ec2-4aee-b0e5-aeebbe550394",
                             Name = "client",
                             NormalizedName = "client"
                         });

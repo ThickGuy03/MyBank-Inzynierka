@@ -74,24 +74,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Adam/source/repos/Inzynierka/Inzynierka/Areas/Identity/Pages/Category/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQ2F0ZWdvcnlcQ3JlYXRlLmNzaHRtbA==
+[C:/Users/Adam/source/repos/Inzynierka/Inzynierka/Areas/Identity/Pages/Categories/AddOrEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQ2F0ZWdvcmllc1xBZGRPckVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Adam/source/repos/Inzynierka/Inzynierka/Areas/Identity/Pages/Category/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQ2F0ZWdvcnlcRGVsZXRlLmNzaHRtbA==
+[C:/Users/Adam/source/repos/Inzynierka/Inzynierka/Areas/Identity/Pages/Categories/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQ2F0ZWdvcmllc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Adam/source/repos/Inzynierka/Inzynierka/Areas/Identity/Pages/Category/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQ2F0ZWdvcnlcRGV0YWlscy5jc2h0bWw=
+[C:/Users/Adam/source/repos/Inzynierka/Inzynierka/Areas/Identity/Pages/Categories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Adam/source/repos/Inzynierka/Inzynierka/Areas/Identity/Pages/Category/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQ2F0ZWdvcnlcRWRpdC5jc2h0bWw=
+[C:/Users/Adam/source/repos/Inzynierka/Inzynierka/Areas/Identity/Pages/Dashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Adam/source/repos/Inzynierka/Inzynierka/Areas/Identity/Pages/Category/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
+[C:/Users/Adam/source/repos/Inzynierka/Inzynierka/Areas/Identity/Pages/Transactions/AddOrEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcVHJhbnNhY3Rpb25zXEFkZE9yRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Adam/source/repos/Inzynierka/Inzynierka/Areas/Identity/Pages/Transactions/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcVHJhbnNhY3Rpb25zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Adam/source/repos/Inzynierka/Inzynierka/Areas/Identity/Pages/Transactions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcVHJhbnNhY3Rpb25zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Adam/source/repos/Inzynierka/Inzynierka/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
@@ -120,6 +128,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Adam/source/repos/Inzynierka/Inzynierka/Pages/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Adam/source/repos/Inzynierka/Inzynierka/Pages/Shared/_SideBar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9TaWRlQmFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Adam/source/repos/Inzynierka/Inzynierka/Pages/Shared/_ValidationScriptsPartial.cshtml]

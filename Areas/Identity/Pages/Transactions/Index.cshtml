@@ -1,0 +1,42 @@
+﻿@page
+@model Inzynierka.Areas.Identity.Pages.Transactions.IndexModel
+
+@{
+    ViewData["PageTitle"] = "Transactions";
+    ViewData["PageActionText"] = "+ New Transaction";
+    ViewData["PageActionUrl"] = "/Identity/Transactions/AddOrEdit";
+}
+<!--<p>
+    <a asp-page="./Create" class="btn btn-primary">Create New</a>
+</p>-->
+<div class="row">
+    <div class="col-md-7">
+        <ejs-grid id="transactions" dataSource="@Model.Transactions" allowSorting="true" allowPaging="true">
+            <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
+            <e-grid-columns>
+                <e-grid-column headerText="Category" field="CategoryTitleWithIcon"></e-grid-column>
+                <e-grid-column headerText="Date" field="Date" width="110px" type="date" format="MMM-dd-yy" textAlign="Left"></e-grid-column>
+                <e-grid-column headerText="Amount" field="FormattedAmount" textAlign="Right"></e-grid-column>
+                <e-grid-column headerText="Actions" template="#actionColumnTemplate" textAlign="Center"></e-grid-column>
+            </e-grid-columns>
+        </ejs-grid>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-centeer">
+            @*<i class="fa-solid fa-shapes fa-2xl"*@
+        </div>
+    </div>
+</div>
+<script id="actionColumnTemplate" type="text/x-template">
+    <div class="d-flex flex-row justify-content-center">
+        <a class="btn btn-sm btn-warning me-2" href="/Identity/Transactions/AddOrEdit?id=${TransactionId}">
+            <i class="fa-solid fa-pen fa-lg"></i>
+        </a>
+        <form method="post" asp-page-handler="Delete" asp-route-id="${CategoryId}" class="delete-form">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-sm btn-danger">
+                <i class="fa-solid fa-trash-can fa-lg"></i>
+            </button>
+        </form>
+    </div>
+</script>

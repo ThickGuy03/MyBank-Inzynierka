@@ -1,0 +1,50 @@
+﻿@page
+@model Inzynierka.Areas.Identity.Pages.Categories.AddOrEditModel
+
+@{
+    ViewData["Title"] = Model.Category.CategoryId == 0? "Create new category":"Edit category";
+}
+
+<h4>@ViewData["Title"]</h4>
+<hr />
+<div class="row e-bigger">
+    <div class="col-md-5">
+        <div class="widget p-5">
+            <form method="post" asp-page="./AddOrEdit">
+                <input type="hidden" asp-for="Category.CategoryId" />
+
+                <div class="mb-3">
+                    <ejs-textbox id="title" placeholder="Title" ejs-for="Category.Title" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="Category.Title" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <ejs-textbox id="icon" placeholder="Icon" ejs-for="Category.Icon" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="Category.Icon" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <div class='e-btn-group custom-rbt-group'>
+                        <input type="radio" id="radioleft" name="Category.Type" value="Expense"
+                        @(Model.Category.Type == "Expense" ? "checked" : "") />
+                        <label class="e-btn" for="radioleft">Expense</label>
+
+                        <input type="radio" id="radiomiddle" name="Category.Type" value="Income"
+                        @(Model.Category.Type == "Income" ? "checked" : "") />
+                        <label class="e-btn" for="radiomiddle">Income</label>
+                    </div>
+                    <span asp-validation-for="Category.Type" class="text-danger"></span>
+                </div>
+
+                <ejs-button id="submit" type="submit" content="Submit"></ejs-button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

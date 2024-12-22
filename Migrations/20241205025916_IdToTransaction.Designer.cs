@@ -4,6 +4,7 @@ using Inzynierka.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Inzynierka.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241205025916_IdToTransaction")]
+    partial class IdToTransaction
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -194,13 +197,13 @@ namespace Inzynierka.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "cd55c495-0dbe-4212-b28e-b70f66ddc6d7",
+                            Id = "c815988a-5176-48ff-97e1-9e5044faf30d",
                             Name = "admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "1b90d729-20c3-4525-b5b3-1e4b62677fcf",
+                            Id = "1b2b381b-7435-46cb-a0f2-3e20a30a02ae",
                             Name = "client",
                             NormalizedName = "client"
                         });

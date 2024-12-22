@@ -7,6 +7,10 @@ html {
     font-size: 16px;
   }
 }
+.e-breadcrumb a, .e-breadcrumb a:hover{
+    text-decoration: none !important;
+    color:inherit !important;
+}
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
@@ -19,9 +23,56 @@ html {
 
 body {
   margin-bottom: 60px;
-  /*background-color: #12161d;
-  color:#ffff;*/
+  background-color: #12161d;
+  color:#ffff;
 }
 .e-bigger{
     font-size: x-large;
 }
+.main-content{
+    margin-left: 290px;
+}
+#sidebar{
+    background-color:#12161d;
+    border-right:2px dashed rgba(150,200,200,0.24);
+    padding:10px 20px;
+}
+.e-grid{
+    border:0px;
+    border-radius:5px;
+}
+.e-grid .e-gridcontent, .e-grid .e-table{
+    background-color:#1a222b;
+}
+.e-grid .e-gridheader{
+    border:5px;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    padding:10px;
+    background-color:#222b33;
+}
+
+.e-btn-group.custom-rbt-group {
+    width: 100%;
+}
+.e-btn-group.custom-rbt-group .e-btn{
+    width: 50%;
+}
+.custom-rbt-group label.e-btn{
+    box-shadow:none !important;
+    border: 1px solid #fff;
+    background-color: rgb(34,43,51);
+    color:#fff;
+}
+.e-btn-group.custom-rbt-group input:checked +label.e-btn{
+    background:#fff;
+    color:#212b36;
+    border:1px solid #fff;
+}
+.widget{
+    border-radius: 2rem;
+    background-color: #1a222b;
+    
+}
+                                        
+
