@@ -17,7 +17,8 @@ namespace Inzynierka.Models
         public Category Category { get; set; }
 
         [Required] 
-        [Range(1, int.MaxValue, ErrorMessage = "Amount must be greater than 0.")] 
+        [Range(0, double.MaxValue, ErrorMessage = "Amount must be greater than 0.")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Amount { get; set; }
 
         [Column(TypeName = "nvarchar(100)")] 

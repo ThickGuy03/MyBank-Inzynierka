@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 
 namespace Inzynierka.Services
@@ -28,6 +29,8 @@ namespace Inzynierka.Services
             client.NormalizedName = "client";
 
             builder.Entity<IdentityRole>().HasData(admin,client);
+
+            builder.Entity<Transaction>().Property(t => t.Amount).HasColumnType("decimal(18, 2)");
         }
     }
 }
