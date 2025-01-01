@@ -1,10 +1,10 @@
 using Inzynierka.Services;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Inzynierka.Areas.Identity.Pages.Dashboard
 {
@@ -24,9 +24,24 @@ namespace Inzynierka.Areas.Identity.Pages.Dashboard
         public decimal Balance { get; set; }
         public List<object> DoughnutChartData { get; set; }
         public List<object> splineChartData { get; set; }
+        public List<object> LastTransactions { get; set; }
 
         public async Task OnGetAsync()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                
+                TotalIncome = 0;
+                PeriodIncome = 0;
+                TotalExpense = 0;
+                PeriodExpense = 0;
+                Balance = 0;
+                DoughnutChartData = new List<object>();
+                splineChartData = new List<object>();
+                LastTransactions = new List<object>();
+                return;
+            }
+
             List<Inzynierka.Models.Transaction> AllTransactions = await _context.Transactions.Include(x => x.Category).ToListAsync();
 
             TotalIncome = AllTransactions.Where(i => i.Category.Type == "Income").Sum(j => j.Amount);
@@ -49,7 +64,7 @@ namespace Inzynierka.Areas.Identity.Pages.Dashboard
                 {
                     categoryTitleWithIcon = k.First().Category.TitleWithIcon,
                     amount = k.Sum(j => j.Amount),
-                    formattedAmount = k.Sum(j => j.Amount).ToString("C2"),
+                    formattedAmount = k.Sum(j => j.Amount).ToString("C2", System.Globalization.CultureInfo.GetCultureInfo("en-US")),
                 }).OrderByDescending(l => l.amount).ToList<object>();
 
             List<SplineChartData> IncomeSummary = SelectedTransactions
@@ -81,12 +96,27 @@ namespace Inzynierka.Areas.Identity.Pages.Dashboard
                 expense = ExpenseSummary.FirstOrDefault(x => x.Day == day)?.Expense ?? 0
             }).ToList<object>();
 
+            LastTransactions = await _context.Transactions.Select(t => new
+            {
+                Date = t.Date.ToString("yyyy-MM-dd"),
+                Category = t.Category.TitleWithIcon,
+                Amount = t.Amount,
+                Type = t.Category.Type
+            }).ToListAsync<object>();
+
         }
         public class SplineChartData
         {
             public string Day { get; set; }
             public decimal Income { get; set; }
             public decimal Expense { get; set; }
+        }
+        public class LastTransaction
+        {
+            public DateTime Date { get; set; }
+            public string Category { get; set; }
+            public decimal Amount { get; set; }
+            public string Type { get; set; }
         }
     }
 }
