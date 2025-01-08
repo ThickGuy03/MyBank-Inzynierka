@@ -1,0 +1,45 @@
+﻿@page
+@model Inzynierka.Areas.Identity.Pages.Insurance.IndexModel
+@{
+    ViewData["PageTitle"] = "Insurance Comparison";
+}
+
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-end mb-4">
+        <label for="pageSizeDropdown" class="me-2">Rows per page:</label>
+        <select id="pageSizeDropdown" class="form-control" style="width: 120px;">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+        </select>
+    </div>
+
+    <ejs-grid id="insuranceGrid" dataSource="@Model.InsurancePlans" allowPaging="true" allowSorting="true" allowFiltering="true">
+        <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
+        <e-grid-filterSettings ignoreAccent='true'></e-grid-filterSettings>
+        <e-grid-columns>
+            <e-grid-column field="Provider" headerText="Provider" width="150"></e-grid-column>
+            <e-grid-column field="InsuranceType" headerText="InsuranceType" width="120"></e-grid-column>
+            <e-grid-column field="Coverage" headerText="Coverage" width="120"></e-grid-column>
+            <e-grid-column field="Premium" headerText="Premium ($)" width="120" format="C2" textAlign="Right"></e-grid-column>
+            <e-grid-column field="Deductible" headerText="Deductible ($)" width="140" format="C2" textAlign="Right"></e-grid-column>
+            <e-grid-column field="Rating" headerText="Rating" width="100" textAlign="Center"></e-grid-column>
+        </e-grid-columns>
+    </ejs-grid>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var grid = document.getElementById('insuranceGrid').ej2_instances[0];
+        var pageSizeDropdown = document.getElementById('pageSizeDropdown');
+
+        // Change the page size when the user selects a new value
+        pageSizeDropdown.addEventListener('change', function () {
+            var pageSize = parseInt(pageSizeDropdown.value);
+            grid.pageSettings.pageSize = pageSize;
+            grid.refresh();
+        });
+    });
+</script>

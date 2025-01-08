@@ -1,18 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Inzynierka.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
 using Inzynierka.Services;
 
 namespace Inzynierka.Areas.Identity.Pages.Categories
 {
     public class IndexModel : PageModel
     {
-        public IEnumerable<Category> Categories { get; private set; }
-
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
@@ -22,7 +21,9 @@ namespace Inzynierka.Areas.Identity.Pages.Categories
             _userManager = userManager;
         }
 
-        public async Task OnGet()
+        public IEnumerable<Category> Categories { get; private set; }
+
+        public async Task OnGetAsync()
         {
             var currentUser = await _userManager.GetUserAsync(User);
 
@@ -39,7 +40,6 @@ namespace Inzynierka.Areas.Identity.Pages.Categories
             }
         }
 
-        // Delete handler
         public async Task<IActionResult> OnPostDeleteAsync(int id)
         {
             var category = await _context.Categories.FindAsync(id);
@@ -52,7 +52,7 @@ namespace Inzynierka.Areas.Identity.Pages.Categories
             _context.Categories.Remove(category);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index"); // Redirect to reload updated data
+            return RedirectToPage("./Index"); // Redirect to the same page to refresh the grid
         }
     }
 }

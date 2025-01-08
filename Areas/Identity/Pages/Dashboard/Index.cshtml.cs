@@ -5,16 +5,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Inzynierka.Models;
 
 namespace Inzynierka.Areas.Identity.Pages.Dashboard
 {
     public class IndexModel : PageModel
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public IndexModel(ApplicationDbContext context)
+        public IndexModel(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public decimal TotalIncome { get; set; }
@@ -30,7 +34,6 @@ namespace Inzynierka.Areas.Identity.Pages.Dashboard
         {
             if (!User.Identity.IsAuthenticated)
             {
-                
                 TotalIncome = 0;
                 PeriodIncome = 0;
                 TotalExpense = 0;
@@ -42,7 +45,15 @@ namespace Inzynierka.Areas.Identity.Pages.Dashboard
                 return;
             }
 
-            List<Inzynierka.Models.Transaction> AllTransactions = await _context.Transactions.Include(x => x.Category).ToListAsync();
+            // Get the current user's ID
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user?.Id;
+
+            // Filter transactions by the current user's ID
+            List<Transaction> AllTransactions = await _context.Transactions
+                .Include(x => x.Category)
+                .Where(t => t.UserId == userId)
+                .ToListAsync();
 
             TotalIncome = AllTransactions.Where(i => i.Category.Type == "Income").Sum(j => j.Amount);
             TotalExpense = AllTransactions.Where(i => i.Category.Type == "Expense").Sum(j => j.Amount);
@@ -51,10 +62,10 @@ namespace Inzynierka.Areas.Identity.Pages.Dashboard
 
             DateTime StartDate = DateTime.Today.AddDays(-29);
             DateTime EndDate = DateTime.Today;
-            List<Inzynierka.Models.Transaction> SelectedTransactions = AllTransactions
+            List<Transaction> SelectedTransactions = AllTransactions
                 .Where(y => y.Date >= StartDate && y.Date <= EndDate)
                 .ToList();
-            PeriodIncome=SelectedTransactions.Where(i => i.Category.Type == "Income").Sum(j => j.Amount);
+            PeriodIncome = SelectedTransactions.Where(i => i.Category.Type == "Income").Sum(j => j.Amount);
             PeriodExpense = SelectedTransactions.Where(i => i.Category.Type == "Expense").Sum(j => j.Amount);
 
             DoughnutChartData = SelectedTransactions
@@ -96,21 +107,28 @@ namespace Inzynierka.Areas.Identity.Pages.Dashboard
                 expense = ExpenseSummary.FirstOrDefault(x => x.Day == day)?.Expense ?? 0
             }).ToList<object>();
 
-            LastTransactions = await _context.Transactions.Select(t => new
-            {
-                Date = t.Date.ToString("yyyy-MM-dd"),
-                Category = t.Category.TitleWithIcon,
-                Amount = t.Amount,
-                Type = t.Category.Type
-            }).ToListAsync<object>();
+            LastTransactions = await _context.Transactions
+                .Where(t => t.UserId == userId)
+                .OrderByDescending(t => t.Date)
+                .Take(5)
+                .Select(t => new
+                {
+                    Date = t.Date.ToString("yyyy-MM-dd"),
+                    Category = t.Category.TitleWithIcon,
+                    Amount = t.Amount,
+                    Type = t.Category.Type
+                }).ToListAsync<object>();
 
+            LastTransactions ??= new List<object>();
         }
+
         public class SplineChartData
         {
             public string Day { get; set; }
             public decimal Income { get; set; }
             public decimal Expense { get; set; }
         }
+
         public class LastTransaction
         {
             public DateTime Date { get; set; }

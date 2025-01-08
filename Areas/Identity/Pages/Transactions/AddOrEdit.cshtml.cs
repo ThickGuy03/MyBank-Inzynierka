@@ -28,14 +28,12 @@ namespace Inzynierka.Areas.Identity.Pages.Transactions
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            // Get the current user
             var currentUser = await _userManager.GetUserAsync(User);
             if (currentUser == null)
             {
                 return RedirectToPage("/Account/Login");
             }
 
-            // Load categories for the dropdown
             Categories = _context.Categories
                 .Where(c => c.UserId == currentUser.Id)
                 .Select(c => new SelectListItem
@@ -45,17 +43,16 @@ namespace Inzynierka.Areas.Identity.Pages.Transactions
                 })
                 .ToList();
 
-            // If id is null, create a new transaction
             if (id == null)
             {
                 Transaction = new Transaction
                 {
-                    Date = DateTime.Now // Default value for the date field
+                    Date = DateTime.Now,
+                    Amount = 0 
                 };
             }
             else
             {
-                // Load the transaction from the database
                 Transaction = await _context.Transactions.FindAsync(id);
                 if (Transaction == null)
                 {
@@ -68,21 +65,6 @@ namespace Inzynierka.Areas.Identity.Pages.Transactions
 
         public async Task<IActionResult> OnPostAsync()
         {
-            /*if (!ModelState.IsValid)
-            {
-                // Reload categories if validation fails
-                var currentUser = await _userManager.GetUserAsync(User);
-                Categories = _context.Categories
-                    .Where(c => c.UserId == currentUser.Id)
-                    .Select(c => new SelectListItem
-                    {
-                        Value = c.CategoryId.ToString(),
-                        Text = c.Title
-                    })
-                    .ToList();
-
-                return Page();
-            }*/
 
             var currentUser2 = await _userManager.GetUserAsync(User);
             Transaction.UserId = currentUser2.Id;

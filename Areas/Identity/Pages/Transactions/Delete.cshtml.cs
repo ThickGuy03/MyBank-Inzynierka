@@ -1,11 +1,12 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Inzynierka.Models;
-using Inzynierka.Services;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Inzynierka.Models;
+
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Inzynierka.Services;
 
 namespace Inzynierka.Areas.Identity.Pages.Transactions
 {
@@ -23,6 +24,8 @@ namespace Inzynierka.Areas.Identity.Pages.Transactions
         [BindProperty]
         public Transaction Transaction { get; set; }
 
+        public List<Transaction> TransactionDetails { get; set; }
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -30,18 +33,21 @@ namespace Inzynierka.Areas.Identity.Pages.Transactions
                 return NotFound();
             }
 
-            // Get the logged-in user's ID
+            // Get the current user's ID
             var currentUserId = _userManager.GetUserId(User);
 
-            // Fetch the transaction for the logged-in user
+            // Fetch the transaction
             Transaction = await _context.Transactions
-                .Include(t => t.Category)
-                .FirstOrDefaultAsync(m => m.TransactionId == id && m.UserId == currentUserId);
+                .Include(t => t.Category) // Include related category
+                .FirstOrDefaultAsync(t => t.TransactionId == id && t.UserId == currentUserId);
 
             if (Transaction == null)
             {
                 return NotFound();
             }
+
+            // Prepare transaction details for the EJ2 Grid
+            TransactionDetails = new List<Transaction> { Transaction };
 
             return Page();
         }
@@ -53,23 +59,23 @@ namespace Inzynierka.Areas.Identity.Pages.Transactions
                 return NotFound();
             }
 
-            // Get the logged-in user's ID
+            // Get the current user's ID
             var currentUserId = _userManager.GetUserId(User);
 
-            // Fetch the transaction for deletion
-            var transactionToDelete = await _context.Transactions
-                .FirstOrDefaultAsync(m => m.TransactionId == id && m.UserId == currentUserId);
+            // Fetch the transaction
+            var transaction = await _context.Transactions
+                .FirstOrDefaultAsync(t => t.TransactionId == id && t.UserId == currentUserId);
 
-            if (transactionToDelete == null)
+            if (transaction == null)
             {
                 return NotFound();
             }
 
-            // Remove the transaction from the database
-            _context.Transactions.Remove(transactionToDelete);
+            // Delete the transaction
+            _context.Transactions.Remove(transaction);
             await _context.SaveChangesAsync();
 
-            // Redirect back to the Index page after deletion
+            // Redirect to the Index page after deletion
             return RedirectToPage("./Index");
         }
     }

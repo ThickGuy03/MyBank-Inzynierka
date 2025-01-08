@@ -14,7 +14,8 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "8.0.10",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.11",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.7",
-          "Syncfusion.EJ2.AspNet.Core": "27.2.5"
+          "Syncfusion.EJ2.AspNet.Core": "27.2.5",
+          "Syncfusion.EJ2.GridExport.Core": "27.2.2"
         },
         "runtime": {
           "Inzynierka.dll": {}
@@ -1888,6 +1889,14 @@
           }
         }
       },
+      "Syncfusion.Compression.Net.Core/27.2.2": {
+        "runtime": {
+          "lib/net8.0/Syncfusion.Compression.Portable.dll": {
+            "assemblyVersion": "27.2.2.0",
+            "fileVersion": "27.2.2.0"
+          }
+        }
+      },
       "Syncfusion.EJ2.AspNet.Core/27.2.5": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
@@ -1900,11 +1909,50 @@
           }
         }
       },
+      "Syncfusion.EJ2.GridExport.Core/27.2.2": {
+        "dependencies": {
+          "Syncfusion.Compression.Net.Core": "27.2.2",
+          "Syncfusion.EJ2.AspNet.Core": "27.2.5",
+          "Syncfusion.Pdf.Net.Core": "27.2.2",
+          "Syncfusion.XlsIO.Net.Core": "27.2.2"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Syncfusion.EJ2.GridExport.dll": {
+            "assemblyVersion": "27.2.2.0",
+            "fileVersion": "27.2.2.0"
+          }
+        }
+      },
       "Syncfusion.Licensing/27.2.5": {
         "runtime": {
           "lib/net8.0/Syncfusion.Licensing.dll": {
             "assemblyVersion": "27.2.5.0",
             "fileVersion": "27.2.5.0"
+          }
+        }
+      },
+      "Syncfusion.Pdf.Net.Core/27.2.2": {
+        "dependencies": {
+          "Syncfusion.Compression.Net.Core": "27.2.2",
+          "Syncfusion.Licensing": "27.2.5",
+          "System.Text.Encoding.CodePages": "6.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/Syncfusion.Pdf.Portable.dll": {
+            "assemblyVersion": "27.2.2.0",
+            "fileVersion": "27.2.2.0"
+          }
+        }
+      },
+      "Syncfusion.XlsIO.Net.Core/27.2.2": {
+        "dependencies": {
+          "Syncfusion.Compression.Net.Core": "27.2.2",
+          "Syncfusion.Licensing": "27.2.5"
+        },
+        "runtime": {
+          "lib/net8.0/Syncfusion.XlsIO.Portable.dll": {
+            "assemblyVersion": "27.2.2.0",
+            "fileVersion": "27.2.2.0"
           }
         }
       },
@@ -3130,6 +3178,13 @@
       "path": "sqlitepclraw.provider.e_sqlite3/2.1.6",
       "hashPath": "sqlitepclraw.provider.e_sqlite3.2.1.6.nupkg.sha512"
     },
+    "Syncfusion.Compression.Net.Core/27.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/OjsXe+2Rmz1vYAbNWtdJYUZk7fCwocF5ANCCYrK5t0hXOj2wddey18+947hk6qXHA38H/5mTiLic13VWq+a7w==",
+      "path": "syncfusion.compression.net.core/27.2.2",
+      "hashPath": "syncfusion.compression.net.core.27.2.2.nupkg.sha512"
+    },
     "Syncfusion.EJ2.AspNet.Core/27.2.5": {
       "type": "package",
       "serviceable": true,
@@ -3137,12 +3192,33 @@
       "path": "syncfusion.ej2.aspnet.core/27.2.5",
       "hashPath": "syncfusion.ej2.aspnet.core.27.2.5.nupkg.sha512"
     },
+    "Syncfusion.EJ2.GridExport.Core/27.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ky20ZlGrg5xJBaJU/W8QDCBPeBL2ub1d92m9LOYaO/TYATToHarIGt7hS2VUqSsIod3oqfmhrK2jxxgMm4gmNg==",
+      "path": "syncfusion.ej2.gridexport.core/27.2.2",
+      "hashPath": "syncfusion.ej2.gridexport.core.27.2.2.nupkg.sha512"
+    },
     "Syncfusion.Licensing/27.2.5": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-esz3QIcCfxz6PSNmsX7WQh+rdVOgalZCYOdM1naYUqxZWKhf4En7Ytd2w8e9HSfLgQ2HcAnuk4d0X3CBlRlevQ==",
       "path": "syncfusion.licensing/27.2.5",
       "hashPath": "syncfusion.licensing.27.2.5.nupkg.sha512"
+    },
+    "Syncfusion.Pdf.Net.Core/27.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GjpjrrRN8MAeS0Ho8CGfeSoqFdNzI7WinxkQYxONOIowcbwH4Qnv6hiM62txuOp9a+VUuEdJBraogR94BX4d/w==",
+      "path": "syncfusion.pdf.net.core/27.2.2",
+      "hashPath": "syncfusion.pdf.net.core.27.2.2.nupkg.sha512"
+    },
+    "Syncfusion.XlsIO.Net.Core/27.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-49jJRFdQ7/0HXoWEaEkeVm7Nl+XBxmakDCPCF+qnpFRsqOVsQItrXOlVJFWEg5ybP1U81Qxp/lvNjZo/J47m6g==",
+      "path": "syncfusion.xlsio.net.core/27.2.2",
+      "hashPath": "syncfusion.xlsio.net.core.27.2.2.nupkg.sha512"
     },
     "System.CodeDom/5.0.0": {
       "type": "package",

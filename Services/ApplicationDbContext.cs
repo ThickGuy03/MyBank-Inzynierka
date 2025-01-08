@@ -13,9 +13,10 @@ namespace Inzynierka.Services
         {
 
         }
-
+        public DbSet<InsuranceProvider> InsuranceProviders { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Credit> Credits { get; set; }
 
         //Creating roles
         protected override void OnModelCreating(ModelBuilder builder)

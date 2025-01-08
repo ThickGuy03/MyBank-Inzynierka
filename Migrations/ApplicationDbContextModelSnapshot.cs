@@ -133,6 +133,70 @@ namespace Inzynierka.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("Inzynierka.Models.Credit", b =>
+                {
+                    b.Property<int>("CreditId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CreditId"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("InterestRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("MaxAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("MaxDurationMonths")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CreditId");
+
+                    b.ToTable("Credits");
+                });
+
+            modelBuilder.Entity("Inzynierka.Models.InsuranceProvider", b =>
+                {
+                    b.Property<int>("ProviderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProviderId"));
+
+                    b.Property<string>("CoverageType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Deductible")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("InsuranceType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Premium")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ProviderName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Rating")
+                        .HasColumnType("float");
+
+                    b.HasKey("ProviderId");
+
+                    b.ToTable("InsuranceProviders");
+                });
+
             modelBuilder.Entity("Inzynierka.Models.Transaction", b =>
                 {
                     b.Property<int>("TransactionId")
@@ -150,9 +214,18 @@ namespace Inzynierka.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsRecurring")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Note")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime?>("RecurrenceEndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("RecurrenceFrequency")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -194,13 +267,13 @@ namespace Inzynierka.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7c323d04-490f-4405-9aeb-239e816df505",
+                            Id = "b887a306-17ae-464a-a73a-9f9360e97da1",
                             Name = "admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "0192dd43-2d26-4675-851b-01e218a972aa",
+                            Id = "5695cbd2-d7f0-42a5-b675-55004c5cd341",
                             Name = "client",
                             NormalizedName = "client"
                         });

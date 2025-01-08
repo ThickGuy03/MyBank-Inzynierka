@@ -17,6 +17,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
     <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="27.2.5" />
+    <PackageReference Include="Syncfusion.EJ2.GridExport.Core" Version="27.2.2" />
   </ItemGroup>
 
 </Project>

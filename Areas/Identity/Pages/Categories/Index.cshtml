@@ -7,10 +7,15 @@
     ViewData["PageActionUrl"] = "/Identity/Categories/AddOrEdit";
 }
 
-<!--<p>
-    <a asp-page="./AddOrEdit" class="btn btn-primary">Create New</a>
-</p>-->
-
+<div class="d-flex justify-content-end mb-4">
+    <label for="pageSizeDropdown" class="me-2">Rows per page:</label>
+    <select id="pageSizeDropdown" class="form-control" style="width: 120px;">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+    </select>
+</div>
 <div class="row">
     <div class="col-md-7">
         <ejs-grid id="categories" dataSource="@Model.Categories" allowSorting="true" allowPaging="true">
@@ -23,8 +28,8 @@
         </ejs-grid>
     </div>
     <div class="col-md-5">
-        <div class="widget h-100 d-flex justify-content-center align-items-centeer">
-            <i class="fa-solid fa-shapes fa-2xl"
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-shapes fa-5x"></i>
         </div>
     </div>
 </div>
@@ -42,26 +47,22 @@
         <a class="btn btn-sm btn-warning me-2" href="/Identity/Categories/AddOrEdit?id=${CategoryId}">
             <i class="fa-solid fa-pen fa-lg"></i>
         </a>
-        <form method="post" asp-page-handler="Delete" asp-route-id="${CategoryId}" class="delete-form">
-            @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-sm btn-danger">
-                <i class="fa-solid fa-trash-can fa-lg"></i>
-            </button>
-        </form>
+        <a class="btn btn-sm btn-danger" href="/Identity/Categories/Delete?id=${CategoryId}">
+            <i class="fa-solid fa-trash-can fa-lg"></i>
+        </a>
     </div>
 </script>
 
-<!-- Confirmation Script -->
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Add confirmation dialog to all forms with class 'delete-form'
-        const deleteForms = document.querySelectorAll('.delete-form');
-        deleteForms.forEach(form => {
-            form.addEventListener('submit', function (event) {
-                if (!confirm('Are you sure you want to delete this record?')) {
-                    event.preventDefault(); // Stop form submission if user cancels
-                }
-            });
+    document.addEventListener('DOMContentLoaded', function () {
+        var grid = document.getElementById('categories').ej2_instances[0];
+        var pageSizeDropdown = document.getElementById('pageSizeDropdown');
+
+        pageSizeDropdown.addEventListener('change', function () {
+            var pageSize = parseInt(pageSizeDropdown.value);
+            grid.pageSettings.pageSize = pageSize;
+            grid.refresh();
         });
     });
+
 </script>

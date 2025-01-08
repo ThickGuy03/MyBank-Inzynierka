@@ -75,6 +75,10 @@
             "Syncfusion.EJ2.AspNet.Core": {
               "target": "Package",
               "version": "[27.2.5, )"
+            },
+            "Syncfusion.EJ2.GridExport.Core": {
+              "target": "Package",
+              "version": "[27.2.2, )"
             }
           },
           "imports": [

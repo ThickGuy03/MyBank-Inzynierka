@@ -2,6 +2,7 @@ using Inzynierka.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Inzynierka.Models;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,12 +13,26 @@ builder.Services.AddControllersWithViews()
     {
         options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
     });
+builder.Services.AddRazorPages()
+        .AddRazorPagesOptions(options =>
+        {
+            options.Conventions.AuthorizeFolder("/Identity/Transactions");
+        })
+        .AddMvcOptions(options =>
+        {
+            options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+        });
 
 builder.Services.AddRazorPages()
     .AddRazorPagesOptions(options =>
     {
         options.Conventions.AuthorizeAreaFolder("Identity", "/Category");
+    })
+    .AddMvcOptions(options =>
+    {
+        options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
     });
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -65,6 +80,7 @@ app.Use(async (context, next) =>
 
     await next.Invoke();
 });
+
 
 app.MapControllerRoute(
     name: "default",

@@ -6,9 +6,15 @@
     ViewData["PageActionText"] = "+ New Transaction";
     ViewData["PageActionUrl"] = "/Identity/Transactions/AddOrEdit";
 }
-<!--<p>
-    <a asp-page="./Create" class="btn btn-primary">Create New</a>
-</p>-->
+<div class="d-flex justify-content-end mb-4">
+    <label for="pageSizeDropdown" class="me-2">Rows per page:</label>
+    <select id="pageSizeDropdown" class="form-control" style="width: 120px;">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+    </select>
+</div>
 <div class="row">
     <div class="col-md-7">
         <ejs-grid id="transactions" dataSource="@Model.Transactions" allowSorting="true" allowPaging="true">
@@ -17,13 +23,14 @@
                 <e-grid-column headerText="Category" field="CategoryTitleWithIcon"></e-grid-column>
                 <e-grid-column headerText="Date" field="Date" width="110px" type="date" format="MMM-dd-yy" textAlign="Left"></e-grid-column>
                 <e-grid-column headerText="Amount" field="FormattedAmount" textAlign="Right"></e-grid-column>
+                <e-grid-column headerText="Reccuring" field="IsReccuring" textAlign="Center" width="100"></e-grid-column>
                 <e-grid-column headerText="Actions" template="#actionColumnTemplate" textAlign="Center"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
     </div>
     <div class="col-md-5">
-        <div class="widget h-100 d-flex justify-content-center align-items-centeer">
-            @*<i class="fa-solid fa-shapes fa-2xl"*@
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-arrow-right-arrow-left fa-5x"></i>
         </div>
     </div>
 </div>
@@ -32,11 +39,20 @@
         <a class="btn btn-sm btn-warning me-2" href="/Identity/Transactions/AddOrEdit?id=${TransactionId}">
             <i class="fa-solid fa-pen fa-lg"></i>
         </a>
-        <form method="post" asp-page-handler="Delete" asp-route-id="${CategoryId}" class="delete-form">
-            @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-sm btn-danger">
-                <i class="fa-solid fa-trash-can fa-lg"></i>
-            </button>
-        </form>
+        <a class="btn btn-sm btn-danger" href="/Identity/Transactions/Delete?id=${TransactionId}">
+            <i class="fa-solid fa-trash-can fa-lg"></i>
+        </a>
     </div>
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var grid = document.getElementById('transactions').ej2_instances[0];
+        var pageSizeDropdown = document.getElementById('pageSizeDropdown');
+
+        pageSizeDropdown.addEventListener('change', function () {
+            var pageSize = parseInt(pageSizeDropdown.value);
+            grid.pageSettings.pageSize = pageSize;
+            grid.refresh();
+        });
+    });
 </script>

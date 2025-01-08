@@ -292,3 +292,7 @@ C:\Users\Adam\source\repos\Inzynierka\Inzynierka\obj\Debug\net8.0\refint\Inzynie
 C:\Users\Adam\source\repos\Inzynierka\Inzynierka\obj\Debug\net8.0\Inzynierka.pdb
 C:\Users\Adam\source\repos\Inzynierka\Inzynierka\obj\Debug\net8.0\Inzynierka.genruntimeconfig.cache
 C:\Users\Adam\source\repos\Inzynierka\Inzynierka\obj\Debug\net8.0\ref\Inzynierka.dll
+C:\Users\Adam\source\repos\Inzynierka\Inzynierka\bin\Debug\net8.0\Syncfusion.Compression.Portable.dll
+C:\Users\Adam\source\repos\Inzynierka\Inzynierka\bin\Debug\net8.0\Syncfusion.EJ2.GridExport.dll
+C:\Users\Adam\source\repos\Inzynierka\Inzynierka\bin\Debug\net8.0\Syncfusion.Pdf.Portable.dll
+C:\Users\Adam\source\repos\Inzynierka\Inzynierka\bin\Debug\net8.0\Syncfusion.XlsIO.Portable.dll

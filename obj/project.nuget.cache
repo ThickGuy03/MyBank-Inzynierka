@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dt/eMKaMZyA=",
+  "dgSpecHash": "jVq2Og0LrPA=",
   "success": true,
   "projectFilePath": "C:\\Users\\Adam\\source\\repos\\Inzynierka\\Inzynierka\\Inzynierka.csproj",
   "expectedPackageFiles": [
@@ -139,8 +139,12 @@
     "C:\\Users\\Adam\\.nuget\\packages\\sqlitepclraw.core\\2.1.6\\sqlitepclraw.core.2.1.6.nupkg.sha512",
     "C:\\Users\\Adam\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.6\\sqlitepclraw.lib.e_sqlite3.2.1.6.nupkg.sha512",
     "C:\\Users\\Adam\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.6\\sqlitepclraw.provider.e_sqlite3.2.1.6.nupkg.sha512",
+    "C:\\Users\\Adam\\.nuget\\packages\\syncfusion.compression.net.core\\27.2.2\\syncfusion.compression.net.core.27.2.2.nupkg.sha512",
     "C:\\Users\\Adam\\.nuget\\packages\\syncfusion.ej2.aspnet.core\\27.2.5\\syncfusion.ej2.aspnet.core.27.2.5.nupkg.sha512",
+    "C:\\Users\\Adam\\.nuget\\packages\\syncfusion.ej2.gridexport.core\\27.2.2\\syncfusion.ej2.gridexport.core.27.2.2.nupkg.sha512",
     "C:\\Users\\Adam\\.nuget\\packages\\syncfusion.licensing\\27.2.5\\syncfusion.licensing.27.2.5.nupkg.sha512",
+    "C:\\Users\\Adam\\.nuget\\packages\\syncfusion.pdf.net.core\\27.2.2\\syncfusion.pdf.net.core.27.2.2.nupkg.sha512",
+    "C:\\Users\\Adam\\.nuget\\packages\\syncfusion.xlsio.net.core\\27.2.2\\syncfusion.xlsio.net.core.27.2.2.nupkg.sha512",
     "C:\\Users\\Adam\\.nuget\\packages\\system.codedom\\5.0.0\\system.codedom.5.0.0.nupkg.sha512",
     "C:\\Users\\Adam\\.nuget\\packages\\system.collections.immutable\\7.0.0\\system.collections.immutable.7.0.0.nupkg.sha512",
     "C:\\Users\\Adam\\.nuget\\packages\\system.composition\\7.0.0\\system.composition.7.0.0.nupkg.sha512",

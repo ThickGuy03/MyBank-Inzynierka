@@ -1,0 +1,68 @@
+﻿@page
+@model Inzynierka.Areas.Identity.Pages.Credits.ApplyModel
+@{
+    ViewData["PageTitle"] = "Apply for Credit";
+}
+
+<div class="container mt-5">
+    <form method="post">
+        <div class="form-group mb-3">
+            <label for="LoanAmount">Loan Amount ($)</label>
+            <ejs-numerictextbox id="LoanAmount" name="CreditApplication.LoanAmount" floatLabelType="Auto" placeholder="Enter loan amount" value="@Model.CreditApplication.LoanAmount"></ejs-numerictextbox>
+            <span asp-validation-for="CreditApplication.LoanAmount" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="DurationMonths">Duration (Months)</label>
+            <ejs-numerictextbox id="DurationMonths" name="CreditApplication.DurationMonths" floatLabelType="Auto" placeholder="Enter duration in months" value="@Model.CreditApplication.DurationMonths" format="n0" decimals="0"></ejs-numerictextbox>
+            <span asp-validation-for="CreditApplication.DurationMonths" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="Purpose">Purpose</label>
+            <ejs-textbox id="Purpose" name="CreditApplication.Purpose" floatLabelType="Auto" placeholder="Enter purpose" multiline="true" value="@Model.CreditApplication.Purpose"></ejs-textbox>
+            <span asp-validation-for="CreditApplication.Purpose" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit Application</button>
+    </form>
+
+    <div class="d-flex justify-content-end mb-4">
+        <label for="pageSizeDropdown" class="me-2">Rows per page:</label>
+        <select id="pageSizeDropdown" class="form-control" style="width: 120px;">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+        </select>
+    </div>
+
+    <h3 class="mt-5 mb-4">Predicted Payment Schedule</h3>
+    <ejs-grid id="paymentGrid" dataSource="@Model.PaymentSchedules" allowPaging="true" allowSorting="true">
+        <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
+        <e-grid-columns>
+            <e-grid-column field="Month" headerText="Month" width="80" textAlign="Right"></e-grid-column>
+            <e-grid-column field="PaymentAmount" headerText="Payment Amount ($)" width="150" format="C2" textAlign="Right"></e-grid-column>
+            <e-grid-column field="Principal" headerText="Principal ($)" width="120" format="C2" textAlign="Right"></e-grid-column>
+            <e-grid-column field="Interest" headerText="Interest ($)" width="120" format="C2" textAlign="Right"></e-grid-column>
+            <e-grid-column field="RemainingBalance" headerText="Remaining Balance ($)" width="150" format="C2" textAlign="Right"></e-grid-column>
+        </e-grid-columns>
+    </ejs-grid>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var grid = document.getElementById('paymentGrid').ej2_instances[0];
+            var pageSizeDropdown = document.getElementById('pageSizeDropdown');
+
+            pageSizeDropdown.addEventListener('change', function () {
+                var pageSize = parseInt(pageSizeDropdown.value);
+                grid.pageSettings.pageSize = pageSize;
+                grid.refresh();
+            });
+        });
+        </script>
+ 
+}

@@ -2356,6 +2356,19 @@
           "lib/net6.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
+      "Syncfusion.Compression.Net.Core/27.2.2": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Syncfusion.Compression.Portable.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Syncfusion.Compression.Portable.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Syncfusion.EJ2.AspNet.Core/27.2.5": {
         "type": "package",
         "dependencies": {
@@ -2373,6 +2386,21 @@
           }
         }
       },
+      "Syncfusion.EJ2.GridExport.Core/27.2.2": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Compression.Net.Core": "27.2.2",
+          "Syncfusion.EJ2.AspNet.Core": "27.2.2",
+          "Syncfusion.Pdf.Net.Core": "27.2.2",
+          "Syncfusion.XlsIO.Net.Core": "27.2.2"
+        },
+        "compile": {
+          "lib/netstandard2.1/Syncfusion.EJ2.GridExport.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Syncfusion.EJ2.GridExport.dll": {}
+        }
+      },
       "Syncfusion.Licensing/27.2.5": {
         "type": "package",
         "compile": {
@@ -2380,6 +2408,41 @@
         },
         "runtime": {
           "lib/net8.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Pdf.Net.Core/27.2.2": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Compression.Net.Core": "27.2.2",
+          "Syncfusion.Licensing": "27.2.2",
+          "System.Text.Encoding.CodePages": "4.4.0"
+        },
+        "compile": {
+          "lib/net8.0/Syncfusion.Pdf.Portable.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Syncfusion.Pdf.Portable.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.XlsIO.Net.Core/27.2.2": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Compression.Net.Core": "27.2.2",
+          "Syncfusion.Licensing": "27.2.2"
+        },
+        "compile": {
+          "lib/net8.0/Syncfusion.XlsIO.Portable.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Syncfusion.XlsIO.Portable.dll": {
+            "related": ".xml"
+          }
         }
       },
       "System.CodeDom/5.0.0": {
@@ -2973,7 +3036,7 @@
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/System.Text.Encoding.CodePages.dll": {
             "related": ".xml"
           }
         },
@@ -7074,6 +7137,29 @@
         "sqlitepclraw.provider.e_sqlite3.nuspec"
       ]
     },
+    "Syncfusion.Compression.Net.Core/27.2.2": {
+      "sha512": "/OjsXe+2Rmz1vYAbNWtdJYUZk7fCwocF5ANCCYrK5t0hXOj2wddey18+947hk6qXHA38H/5mTiLic13VWq+a7w==",
+      "type": "package",
+      "path": "syncfusion.compression.net.core/27.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/net6.0/Syncfusion.Compression.Portable.dll",
+        "lib/net6.0/Syncfusion.Compression.Portable.xml",
+        "lib/net7.0/Syncfusion.Compression.Portable.dll",
+        "lib/net7.0/Syncfusion.Compression.Portable.xml",
+        "lib/net8.0/Syncfusion.Compression.Portable.dll",
+        "lib/net8.0/Syncfusion.Compression.Portable.xml",
+        "lib/net9.0/Syncfusion.Compression.Portable.dll",
+        "lib/net9.0/Syncfusion.Compression.Portable.xml",
+        "lib/netstandard2.0/Syncfusion.Compression.Portable.dll",
+        "lib/netstandard2.0/Syncfusion.Compression.Portable.xml",
+        "syncfusion.compression.net.core.27.2.2.nupkg.sha512",
+        "syncfusion.compression.net.core.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
     "Syncfusion.EJ2.AspNet.Core/27.2.5": {
       "sha512": "lAJ/xjmDM4cWbO8eDXk3RamsPiDAZZt4zs9bgwNINKtoG0ut5jtAeXaLDIASHz55eDHoQPrxgo2fOu7s3BlJNA==",
       "type": "package",
@@ -7100,6 +7186,22 @@
         "syncfusion_logo.png"
       ]
     },
+    "Syncfusion.EJ2.GridExport.Core/27.2.2": {
+      "sha512": "ky20ZlGrg5xJBaJU/W8QDCBPeBL2ub1d92m9LOYaO/TYATToHarIGt7hS2VUqSsIod3oqfmhrK2jxxgMm4gmNg==",
+      "type": "package",
+      "path": "syncfusion.ej2.gridexport.core/27.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/netstandard2.0/Syncfusion.EJ2.GridExport.dll",
+        "lib/netstandard2.1/Syncfusion.EJ2.GridExport.dll",
+        "syncfusion.ej2.gridexport.core.27.2.2.nupkg.sha512",
+        "syncfusion.ej2.gridexport.core.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
     "Syncfusion.Licensing/27.2.5": {
       "sha512": "esz3QIcCfxz6PSNmsX7WQh+rdVOgalZCYOdM1naYUqxZWKhf4En7Ytd2w8e9HSfLgQ2HcAnuk4d0X3CBlRlevQ==",
       "type": "package",
@@ -7123,6 +7225,54 @@
         "lib/uap10.0/Syncfusion.Licensing.dll",
         "syncfusion.licensing.27.2.5.nupkg.sha512",
         "syncfusion.licensing.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Pdf.Net.Core/27.2.2": {
+      "sha512": "GjpjrrRN8MAeS0Ho8CGfeSoqFdNzI7WinxkQYxONOIowcbwH4Qnv6hiM62txuOp9a+VUuEdJBraogR94BX4d/w==",
+      "type": "package",
+      "path": "syncfusion.pdf.net.core/27.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net6.0/Syncfusion.Pdf.Portable.dll",
+        "lib/net6.0/Syncfusion.Pdf.Portable.xml",
+        "lib/net7.0/Syncfusion.Pdf.Portable.dll",
+        "lib/net7.0/Syncfusion.Pdf.Portable.xml",
+        "lib/net8.0/Syncfusion.Pdf.Portable.dll",
+        "lib/net8.0/Syncfusion.Pdf.Portable.xml",
+        "lib/net9.0/Syncfusion.Pdf.Portable.dll",
+        "lib/net9.0/Syncfusion.Pdf.Portable.xml",
+        "lib/netstandard2.0/Syncfusion.Pdf.Portable.dll",
+        "lib/netstandard2.0/Syncfusion.Pdf.Portable.xml",
+        "syncfusion.pdf.net.core.27.2.2.nupkg.sha512",
+        "syncfusion.pdf.net.core.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.XlsIO.Net.Core/27.2.2": {
+      "sha512": "49jJRFdQ7/0HXoWEaEkeVm7Nl+XBxmakDCPCF+qnpFRsqOVsQItrXOlVJFWEg5ybP1U81Qxp/lvNjZo/J47m6g==",
+      "type": "package",
+      "path": "syncfusion.xlsio.net.core/27.2.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net6.0/Syncfusion.XlsIO.Portable.dll",
+        "lib/net6.0/Syncfusion.XlsIO.Portable.xml",
+        "lib/net7.0/Syncfusion.XlsIO.Portable.dll",
+        "lib/net7.0/Syncfusion.XlsIO.Portable.xml",
+        "lib/net8.0/Syncfusion.XlsIO.Portable.dll",
+        "lib/net8.0/Syncfusion.XlsIO.Portable.xml",
+        "lib/net9.0/Syncfusion.XlsIO.Portable.dll",
+        "lib/net9.0/Syncfusion.XlsIO.Portable.xml",
+        "lib/netstandard2.0/Syncfusion.XlsIO.Portable.dll",
+        "lib/netstandard2.0/Syncfusion.XlsIO.Portable.xml",
+        "syncfusion.xlsio.net.core.27.2.2.nupkg.sha512",
+        "syncfusion.xlsio.net.core.nuspec",
         "syncfusion_logo.png"
       ]
     },
@@ -8517,7 +8667,8 @@
       "Microsoft.EntityFrameworkCore.Sqlite >= 8.0.10",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.11",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.7",
-      "Syncfusion.EJ2.AspNet.Core >= 27.2.5"
+      "Syncfusion.EJ2.AspNet.Core >= 27.2.5",
+      "Syncfusion.EJ2.GridExport.Core >= 27.2.2"
     ]
   },
   "packageFolders": {
@@ -8594,6 +8745,10 @@
           "Syncfusion.EJ2.AspNet.Core": {
             "target": "Package",
             "version": "[27.2.5, )"
+          },
+          "Syncfusion.EJ2.GridExport.Core": {
+            "target": "Package",
+            "version": "[27.2.2, )"
           }
         },
         "imports": [

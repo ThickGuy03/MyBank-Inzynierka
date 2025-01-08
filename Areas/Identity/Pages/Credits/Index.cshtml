@@ -1,0 +1,39 @@
+﻿@page
+@model Inzynierka.Areas.Identity.Pages.Credits.IndexModel
+@{
+    ViewData["PageTitle"] = "Credit Offers";
+}
+
+<div class="container mt-5">
+    <ejs-grid id="creditsGrid" dataSource="@Model.Credits" allowPaging="true" allowSorting="true" allowFiltering="true">
+        <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
+        <e-grid-filterSettings ignoreAccent='true'></e-grid-filterSettings>
+        <e-grid-columns>
+            <e-grid-column field="Name" headerText="Credit Name" width="150"></e-grid-column>
+            <e-grid-column field="InterestRate" headerText="Interest Rate (%)" width="120" format="N2" textAlign="Right"></e-grid-column>
+            <e-grid-column field="MaxDurationMonths" headerText="Max Duration (Months)" width="140" textAlign="Right"></e-grid-column>
+            <e-grid-column field="MaxAmount" headerText="Max Amount ($)" width="120" format="C2" textAlign="Right"></e-grid-column>
+            <e-grid-column field="Description" headerText="Description" width="200"></e-grid-column>
+            <e-grid-column headerText="Action" width="100" template="#actionTemplate"></e-grid-column>
+        </e-grid-columns>
+    </ejs-grid>
+</div>
+
+<script id="actionTemplate" type="text/x-template">
+    <a href="/Identity/Credits/Apply?creditId=${CreditId}" class="btn btn-primary">Apply</a>
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var creditsGrid = document.getElementById('creditsGrid').ej2_instances[0];
+        var pageSizeDropdown = document.getElementById('pageSizeDropdown');
+
+        if (pageSizeDropdown) {
+            pageSizeDropdown.addEventListener('change', function () {
+                var pageSize = parseInt(pageSizeDropdown.value);
+                creditsGrid.pageSettings.pageSize = pageSize;
+                creditsGrid.refresh();
+            });
+        }
+    });
+</script>

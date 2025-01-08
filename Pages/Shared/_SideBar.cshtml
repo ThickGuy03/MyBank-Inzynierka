@@ -1,24 +1,77 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Microsoft.AspNetCore.Identity
+@using Inzynierka.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 @{
     List<Object> menuItems = new List<Object>();
-    menuItems.Add(new
+
+    if (SignInManager.IsSignedIn(User))
     {
-        text="Categories",
-        url="/Identity/Categories",
-        iconCss="fa-solid fa-folder-closed"
-    });
-    menuItems.Add(new
-    {
-        text = "Transactions",
-        url = "/Identity/Transactions",
-        iconCss="fa-solid fa-arrow-right-arrow-left"
-    });
+        menuItems.Add(new
+        {
+            text = "Categories",
+            url = "/Identity/Categories",
+            iconCss = "fa-solid fa-folder-closed"
+        });
+        menuItems.Add(new
+        {
+            text = "Transactions",
+            url = "/Identity/Transactions",
+            iconCss = "fa-solid fa-arrow-right-arrow-left"
+        });
+        menuItems.Add(new
+        {
+            text = "Insurance",
+            url = "/Identity/Insurance",
+            iconCss = "fa-solid fa-file-lines"
+        });
+        menuItems.Add(new
+        {
+            text = "Credit",
+            url = "/Identity/Credits",
+            iconCss = "fa-solid fa-sack-dollar"
+        });
+    }
 }
 
 <ejs-sidebar id="sidebar" width="290px">
     <e-content-template>
-        <ejs-menu id="menu" items="menuItems" orientation="Vertical"></ejs-menu>
+        <div class="profile-section">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <!-- Profile Icon with Link to Profile Settings -->
+                <a class="profile-icon" asp-area="Identity" asp-page="/Account/Manage/Index">
+                    <i class="fa-solid fa-user-circle"></i>
+                </a>
+                <div class="profile-info">
+                    <span>@UserManager.GetUserName(User)</span>
+                </div>
+            }
+            else
+            {
+                <div class="login-register-links">
+                    <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    <a class="btn btn-success mt-2" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                </div>
+            }
+        </div>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <div class="menu-container">
+                <ejs-menu id="menu" items="menuItems" orientation="Vertical"></ejs-menu>
+            </div>
+
+            <!-- Logout Button at the Bottom of the Sidebar -->
+            <div class="logout-section">
+                <form method="post" asp-area="Identity" asp-page="/Account/Logout">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger w-100">
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    </button>
+                </form>
+            </div>
+        }
     </e-content-template>
 </ejs-sidebar>
