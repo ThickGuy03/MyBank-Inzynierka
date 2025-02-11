@@ -13,7 +13,7 @@
             <form method="post" asp-page="./AddOrEdit">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Transaction.TransactionId" />
-                
+
                 <div class="mb-3">
                     <ejs-datepicker id="date" ejs-for="Transaction.Date" placeholder="Date" floatLabelType="Always" format="MMM-dd-yy"></ejs-datepicker>
                     <span asp-validation-for="Transaction.Date" class="text-danger"></span>
@@ -35,27 +35,46 @@
                     <ejs-textbox id="note" placeholder="Note" ejs-for="Transaction.Note" floatLabelType="Always" multiline="true"></ejs-textbox>
                     <span asp-validation-for="Transaction.Note" class="text-danger"></span>
                 </div>
-                <!--
+
                 <div class="mb-3">
-                    <ejs-checkbox id="isRecurring" ejs-for="Transaction.IsRecurring" label="Is Recurring?" checked="false" change="onRecurringChange"></ejs-checkbox>
+                    <ejs-checkbox id="isRecurring" ejs-for="Transaction.IsRecurring" label="Is Recurring" checked="false"></ejs-checkbox>
                 </div>
 
-                <div id="recurringOptions" style="display: none;">
-                    <div class="mb-3">
-                        <ejs-dropdownlist id="recurringFrequency" name="Transaction.RecurringFrequency" placeholder="Recurring Frequency" floatLabelType="Always" >
-                            <e-dropdownlist-fields value="Value" text="Text"></e-dropdownlist-fields>
-                        </ejs-dropdownlist>
-                    </div>
+                <div class="mb-3" id="recurrenceFields" style="display: none;">
+                    <ejs-dropdownlist id="recurrenceFrequency" ejs-for="Transaction.RecurrenceFrequency" placeholder="Recurrence Frequency" floatLabelType="Always" dataSource="@Model.RecurrenceFrequencies">
+                        <e-dropdownlist-fields value="Text" text="Text"></e-dropdownlist-fields>
+                    </ejs-dropdownlist>
+                    <span asp-validation-for="Transaction.RecurrenceFrequency" class="text-danger"></span>
 
-                    <div class="mb-3">
-                        <ejs-numerictextbox id="recurringDuration" ejs-for="Transaction.RecurrenceEndDate" placeholder="Recurring Duration (in months)" floatLabelType="Always" min=1></ejs-numerictextbox>
-                    </div>
+                    <ejs-datepicker id="recurrenceEndDate" ejs-for="Transaction.RecurrenceEndDate" placeholder="Recurrence End Date" floatLabelType="Always" format="MMM-dd-yy"></ejs-datepicker>
+                    <span asp-validation-for="Transaction.RecurrenceEndDate" class="text-danger"></span>
                 </div>
-                -->
+
                 <ejs-button id="submit" type="submit" content="Submit"></ejs-button>
             </form>
         </div>
     </div>
 </div>
 
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var isRecurringCheckbox = document.getElementById('isRecurring');
+            var recurrenceFields = document.getElementById('recurrenceFields');
 
+            if (isRecurringCheckbox.checked) {
+                recurrenceFields.style.display = 'block';
+            } else {
+                recurrenceFields.style.display = 'none';
+            }
+
+            isRecurringCheckbox.addEventListener('change', function () {
+                if (this.checked) {
+                    recurrenceFields.style.display = 'block';
+                } else {
+                    recurrenceFields.style.display = 'none';
+                }
+            });
+        });
+    </script>
+}

@@ -23,7 +23,7 @@
                 <e-grid-column headerText="Category" field="CategoryTitleWithIcon"></e-grid-column>
                 <e-grid-column headerText="Date" field="Date" width="110px" type="date" format="MMM-dd-yy" textAlign="Left"></e-grid-column>
                 <e-grid-column headerText="Amount" field="FormattedAmount" textAlign="Right"></e-grid-column>
-                <e-grid-column headerText="Reccuring" field="IsReccuring" textAlign="Center" width="100"></e-grid-column>
+                <e-grid-column headerText="Reccuring" template="#recurringTemplate" textAlign="Center" width="100"></e-grid-column>
                 <e-grid-column headerText="Actions" template="#actionColumnTemplate" textAlign="Center"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
@@ -43,6 +43,13 @@
             <i class="fa-solid fa-trash-can fa-lg"></i>
         </a>
     </div>
+</script>
+<script id="recurringTemplate" type="text/x-template">
+    ${if(IsRecurring)}
+        <span class="badge bg-success">Yes</span>
+    ${else}
+        <span class="badge bg-secondary">No</span>
+    ${/if}
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {

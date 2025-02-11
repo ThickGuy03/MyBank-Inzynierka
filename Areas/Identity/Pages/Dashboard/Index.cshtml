@@ -3,6 +3,21 @@
 @{
     ViewData["isDashboard"] = true;
 }
+<!-- Period Selection Buttons -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="d-flex justify-content-between">
+            <div>
+                <ejs-button id="7days" content="7 Days" cssClass="e-primary" onclick="setPeriod('7')"></ejs-button>
+                <ejs-button id="30days" content="30 Days" cssClass="e-primary" onclick="setPeriod('30')"></ejs-button>
+                <ejs-button id="customPeriod" content="Custom Period" cssClass="e-primary" onclick="toggleCustomDatePicker()"></ejs-button>
+            </div>
+            <div id="customDatePicker" style="display: none;">
+                <ejs-daterangepicker id="daterangepicker" placeholder="Select a range" change="onDateRangeChange"></ejs-daterangepicker>
+            </div>
+        </div>
+    </div>
+</div>
 <!--Display Income/Expense/Balance-->
 <div class="row mb-4">
     <div class="col-md-4">
@@ -127,6 +142,22 @@
             };
             grid.pdfExport(exportProperties);
             }
+        }
+    </script>
+    <script>
+        function setPeriod(period) {
+            window.location.href = `?SelectedPeriod=${period}`;
+        }
+
+        function toggleCustomDatePicker() {
+            var datePicker = document.getElementById("customDatePicker");
+            datePicker.style.display = datePicker.style.display === "none" ? "block" : "none";
+        }
+
+        function onDateRangeChange(args) {
+            var startDate = args.startDate.toISOString().split('T')[0];
+            var endDate = args.endDate.toISOString().split('T')[0];
+            window.location.href = `?SelectedPeriod=custom&CustomStartDate=${startDate}&CustomEndDate=${endDate}`;
         }
     </script>
 }

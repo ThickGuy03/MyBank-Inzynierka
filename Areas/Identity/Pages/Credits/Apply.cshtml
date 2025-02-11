@@ -6,6 +6,9 @@
 
 <div class="container mt-5">
     <form method="post">
+        <!-- Hidden field to store SelectedCredit.CreditId -->
+        <input type="hidden" asp-for="SelectedCredit.CreditId" />
+
         <div class="form-group mb-3">
             <label for="LoanAmount">Loan Amount ($)</label>
             <ejs-numerictextbox id="LoanAmount" name="CreditApplication.LoanAmount" floatLabelType="Auto" placeholder="Enter loan amount" value="@Model.CreditApplication.LoanAmount"></ejs-numerictextbox>
@@ -27,6 +30,12 @@
         <button type="submit" class="btn btn-primary">Submit Application</button>
     </form>
 
+    @if (!string.IsNullOrEmpty(Model.EligibilityMessage))
+    {
+        <div class="alert @(Model.IsEligible ? "alert-success" : "alert-danger") mt-4">
+            @Model.EligibilityMessage
+        </div>
+    }
     <div class="d-flex justify-content-end mb-4">
         <label for="pageSizeDropdown" class="me-2">Rows per page:</label>
         <select id="pageSizeDropdown" class="form-control" style="width: 120px;">

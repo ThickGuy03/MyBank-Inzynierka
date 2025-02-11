@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
-using Inzynierka.Services;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Inzynierka.Services;
 
 namespace Inzynierka.Areas.Identity.Pages.Transactions
 {
@@ -22,9 +22,15 @@ namespace Inzynierka.Areas.Identity.Pages.Transactions
         }
 
         [BindProperty]
-        public Transaction Transaction { get; set; } = new Transaction(); // Initialize Transaction
+        public Transaction Transaction { get; set; } = new Transaction();
 
         public IEnumerable<SelectListItem> Categories { get; set; }
+        public List<SelectListItem> RecurrenceFrequencies { get; set; } = new List<SelectListItem>
+        {
+            new SelectListItem { Value = "Weekly", Text = "Weekly" },
+            new SelectListItem { Value = "Monthly", Text = "Monthly" },
+            new SelectListItem { Value = "Yearly", Text = "Yearly" }
+        };
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -48,7 +54,7 @@ namespace Inzynierka.Areas.Identity.Pages.Transactions
                 Transaction = new Transaction
                 {
                     Date = DateTime.Now,
-                    Amount = 0 
+                    Amount = 0
                 };
             }
             else
@@ -65,9 +71,14 @@ namespace Inzynierka.Areas.Identity.Pages.Transactions
 
         public async Task<IActionResult> OnPostAsync()
         {
+            var currentUser = await _userManager.GetUserAsync(User);
+            Transaction.UserId = currentUser.Id;
 
-            var currentUser2 = await _userManager.GetUserAsync(User);
-            Transaction.UserId = currentUser2.Id;
+            if (!Transaction.IsRecurring)
+            {
+                Transaction.RecurrenceFrequency = null;
+                Transaction.RecurrenceEndDate = null;
+            }
 
             if (Transaction.TransactionId == 0)
             {
