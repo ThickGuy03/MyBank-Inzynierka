@@ -1,10 +1,52 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home Page";
 }
 
+<link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/23.1.36/material.css" />
+<script src="https://cdn.syncfusion.com/ej2/23.1.36/dist/ej2.min.js"></script>
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to MyBank</h1>
+    <p>Your journey starts here. Explore the features and get started!</p>
+
+    <ejs-card id="welcomeCard">
+        <e-card-content>
+            <div class="card-content">
+                <ejs-image id="welcomeImage" src="https://via.placeholder.com/400x200" alt="Welcome Image" width="100%" height="200px"></ejs-image>
+                <div class="card-text">
+                    <h3>Get Started</h3>
+                    <p>Discover the tools and features that will help you achieve your goals.</p>
+                </div>
+                <ejs-button id="startButton" content="Start Now" cssClass="e-primary" onclick="startJourney()"></ejs-button>
+            </div>
+        </e-card-content>
+    </ejs-card>
 </div>
+
+<style>
+    .card-content {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .card-text {
+        margin: 20px 0;
+    }
+
+    #welcomeCard {
+        max-width: 500px;
+        margin: 20px auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+@section Scripts {
+    <script>
+        function startJourney() {
+            alert("Let's get started! Redirecting you to the dashboard...");
+            window.location.href = "/Identity/Dashboard"; 
+        }
+    </script>
+}

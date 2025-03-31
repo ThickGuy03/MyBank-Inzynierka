@@ -45,11 +45,9 @@ namespace Inzynierka.Areas.Identity.Pages.Dashboard
                 return;
             }
 
-            // Get the current user's ID
             var user = await _userManager.GetUserAsync(User);
             var userId = user?.Id;
 
-            // Filter transactions by the current user's ID
             List<Transaction> AllTransactions = await _context.Transactions
                 .Include(x => x.Category)
                 .Where(t => t.UserId == userId)
