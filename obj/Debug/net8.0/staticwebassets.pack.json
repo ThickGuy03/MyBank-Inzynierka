@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "C:\\Users\\Adam\\source\\repos\\Inzynierka\\Inzynierka\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Inzynierka.bundle.scp.css",
-      "PackagePath": "staticwebassets\\Inzynierka.bundle.scp.css"
+      "PackagePath": "staticwebassets\\Inzynierka.legwz7wq5d.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\Adam\\source\\repos\\Inzynierka\\Inzynierka\\wwwroot\\css\\site.css",
@@ -243,6 +243,10 @@
     {
       "Id": "C:\\Users\\Adam\\source\\repos\\Inzynierka\\Inzynierka\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Inzynierka.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Inzynierka.Microsoft.AspNetCore.StaticWebAssets.props",

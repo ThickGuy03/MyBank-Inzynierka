@@ -314,3 +314,7 @@ C:\Users\Adam\source\repos\Inzynierka\Inzynierka\bin\Debug\net8.0\sv\Hangfire.Co
 C:\Users\Adam\source\repos\Inzynierka\Inzynierka\bin\Debug\net8.0\tr-TR\Hangfire.Core.resources.dll
 C:\Users\Adam\source\repos\Inzynierka\Inzynierka\bin\Debug\net8.0\zh-TW\Hangfire.Core.resources.dll
 C:\Users\Adam\source\repos\Inzynierka\Inzynierka\bin\Debug\net8.0\zh\Hangfire.Core.resources.dll
+C:\Users\Adam\source\repos\Inzynierka\Inzynierka\bin\Debug\net8.0\Inzynierka.staticwebassets.endpoints.json
+C:\Users\Adam\source\repos\Inzynierka\Inzynierka\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\Adam\source\repos\Inzynierka\Inzynierka\obj\Debug\net8.0\staticwebassets\msbuild.Inzynierka.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\Adam\source\repos\Inzynierka\Inzynierka\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

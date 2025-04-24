@@ -90,7 +90,8 @@ app.Use(async (context, next) =>
 RecurringJob.AddOrUpdate<RecurringTransactionJob>(
     "ProcessRecurringTransactions",
     job => job.ProcessRecurringTransactions(),
-    Cron.Daily);
+    Cron.Daily(22));
 
+app.UseHangfireDashboard("/hangfire");
 app.MapRazorPages();
 app.Run();
